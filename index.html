@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>HTML и CSS</title>
+        <link rel="stylesheet" href="styles/styles.less"/>
+    </head>
+    <body>
+        <header class="header">
+            <div class="column-wrapper">
+                <div class="header__content">
+                    <div class="header__logo">
+                        <a href="/"><img class="logo" src="styles/blocks/logo/logo.svg" alt="hh.ru" ></a>
+                    </div>
+                    <nav class="header__menu">
+                        <ul class="menu">
+                            <li class="menu__item">
+                                <a class="menu__link" href="https://animego.org/anime">Аниме</a>
+                            </li>
+                            <li class="menu__item">
+                                <a class="menu__link" href="https://animego.org/manga">Манга</a>
+                            </li>
+                            <li class="menu__item">
+                                <a class="menu__link" href="https://animego.org/characters">Персонажи</a>
+                            </li>
+                            <li class="menu__item">
+                                <a class="menu__link" href="https://animego.org/anime/random">Случайное аниме</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="header__fill"></div>
+                    <div class="header__button">
+                        <button class="header-button-icon header-button-icon_search" aria-label="Search"></button>
+                    </div>
+                    <div class="header__button">
+                        <a href="https://animego.org/login">
+                            <button class="header-button header-button_profile">Войти</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="section-content">
+            <div class="column-wrapper">
+                <h2 class="heading heading_level-2">
+                    <a class="product-card__old-price" href="https://animego.org/anime/season/2022/winter">
+                        Аниме зимнего сезона
+                    </a>
+                </h2>
+                <div class="column-row">
+                    <div class="column column_s-1 column_m-2 column_l-4">
+                        <a class="product-card" href="https://animego.org/anime/ataka-titanov-final-chast-2-1919">
+                            <div class="product-card__image-container">
+                                <img class="product-card__image" src="https://animego.org/upload/anime/images/61f1bae751d83209177358.jpg" alt="Зонт" />
+                            </div>
+                            <h4 class="heading heading_level-4">Атака титанов: Финал. Часть 2</h4>
+                            <div class="product-card__price">2022</div>
+                        </a>
+                    </div>
+
+                    <div class="column column_s-1 column_m-2 column_l-4">
+                        <a class="product-card" href="https://animego.org/anime/klinok-rassekayuschiy-demonov-kvartal-krasnyh-fonarey-1876">
+                            <div class="product-card__image-container">
+                                <img class="product-card__image" src="https://animego.org/upload/anime/images/61c0e7650a79e589259475.jpg" alt="Сумка" />
+                            </div>
+                            <h4 class="heading heading_level-4">Клинок, рассекающий демонов: Квартал красных фонарей</h4>
+                            <div class="product-card__price">2022</div>
+                        </a>
+                    </div>
+
+                    <div class="column column_s-1 column_m-2 column_l-4">
+                        <a class="product-card" href="https://animego.org/anime/bisko-rzhavoed-1934">
+                            <div class="product-card__image-container">
+                                <img class="product-card__image" src="https://animego.org/upload/anime/images/61c1b05127a51218768793.jpg" alt="Шлепанцы" />
+                            </div>
+                            <h4 class="heading heading_level-4">Биско-ржавоед
+                            </h4>
+                            <div class="product-card__price">2022</div>
+                        </a>
+                    </div>
+
+                    <div class="column column_s-1 column_m-2 column_l-4">
+                        <a class="product-card" href="https://animego.org/anime/eta-farforovaya-kukla-vlyubilas-1937">
+                            <div class="product-card__image-container">
+                                <img class="product-card__image" src="https://animego.org/upload/anime/images/61c1b3551af16053020004.jpg" alt="Футболка" />
+                                <div class="product-card__sale">sale</div>
+                            </div>
+                            <h4 class="heading heading_level-4">Эта фарфоровая кукла влюбилась
+                            </h4>
+                            <div class="product-card__price">2022</div>
+                        </a>
+                    </div>
+
+                    <div class="column column_s-1 column_m-2 column_l-4">
+                        <a class="product-card" href="https://animego.org/anime/ozornaya-takagi-3-1969">
+                            <div class="product-card__image-container">
+                                <img class="product-card__image" src="https://animego.org/upload/anime/images/61d946e78cdc8269998612.jpg" alt="Толстовка" />
+                            </div>
+                            <h4 class="heading heading_level-4">Озорная Такаги 3
+                            </h4>
+                            <div class="product-card__price">2022</div>
+                        </a>
+                    </div>
+
+                    <div class="column column_s-1 column_m-2 column_l-4">
+                        <a class="product-card" href="https://animego.org/anime/reyting-korolya-1883">
+                            <div class="product-card__image-container">
+                                <img class="product-card__image" src="	https://animego.org/upload/anime/images/61d1a3958a9cb395953899.jpg" alt="Подушка" />
+                            </div>
+                            <h4 class="heading heading_level-4">Рейтинг короля
+                            </h4>
+                            <div class="product-card__price">2022</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="js/grid.js"></script>
+    </body>
+</html>
