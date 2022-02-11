@@ -2,17 +2,55 @@
     display: block;
     max-width: 290px;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     color: inherit;
     text-decoration: none;
 
+    &__pc2 {
+        align-items: center;
+        margin-bottom: 5px;
+        display: flex;
+    }
+
+    &__pc3 {
+        align-items: center;
+        margin-bottom: 5px;
+        display: flex;
+
+        @media @screen-only-s {
+            display: none;
+        }
+    }
+    
     &__image-container {
         position: relative;
         margin-bottom: 5px;
     }
 
+    &__image-container2 {
+        display: flex;
+        position: relative;
+        margin-bottom: 5px;
+        max-height: calc(100%/3);
+        max-width: calc(100%/3);
+    }
+
     &__image {
         max-width: 100%;
+    }
+
+    &__image2 {
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        padding-right: 20px;
+        margin: 10;
+        // display: block;
+    }
+
+    &__price {
+        color: inherit;
+        text-decoration: none;;
     }
 
     &__old-price {
