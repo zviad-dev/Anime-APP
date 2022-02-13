@@ -1,6 +1,5 @@
 let search = document.getElementById("search");
 let result = document.getElementById("result");
-let list = "";
 let poster = document.getElementById("poster");
 let description = document.getElementById("description");
 let recentSearch = document.getElementById("recent-search");
@@ -13,12 +12,34 @@ search.oninput = function() {
     fetch(`https://api.anilibria.tv/v2/searchTitles?search=${anime}&filter=id,names.ru,posters.original.url,description&limit=10`)
       .then(function(response) {return response.json();})
       .then(function(data) {
-        list = "";
+        let list = "";
+        var suggest = '';
+        let temp3 = 0;
         if (data.length != 0) {
-          for (i=0; i<data.length; i++) {
-          list += '<li class="search__li" id = "'+ data[i].id + '"><a class="search__link" data-id= "'+ data[i].id + '" href="#" >' + '<img class="search__image" src=https://www.anilibria.tv' + data[i].posters.original.url + ' alt="постер" />' + data[i].names.ru + '</a></li>';
+        if (JSON.parse(localStorage.getItem("searchStory"))) {
+        let temp = JSON.parse(localStorage.getItem("searchStory"));
+        let temp2 = 0;
+        if (temp.length - 1 <= 4) {
+          temp2 = 0;
+          temp3 = temp.length;
+        } else {
+          temp2 = temp.length - 5;
+          temp3 = temp.length;
         }
-          result.innerHTML = '<ul class="search__ul">' + list + '</ul>';
+        for(i=temp.length - 1; i>=temp2; i--) { 
+          suggest += '<li class="search__li" id = "'+ JSON.parse(localStorage.getItem(temp[i])).id + '"><a class="search__link2" data-id= "'+ JSON.parse(localStorage.getItem(temp[i])).id + '" href="#">' + '<img class="search__image" src=https://www.anilibria.tv' + JSON.parse(localStorage.getItem(temp[i])).posters.original.url + ' alt="постер" />' + JSON.parse(localStorage.getItem(temp[i])).names.ru + '</a></li>';
+        }
+        }        
+        let temp4 = 0; 
+        if (data.length + temp3 > 10) {
+          temp4 = 10 - temp3;
+        } else {
+          temp4 = data.length;
+        }
+        for (i=0; i<temp4; i++) {
+          list += '<li class="search__li" id = "'+ data[i].id + '"><a class="search__link" data-id= "'+ data[i].id + '" href="#">' + '<img class="search__image" src=https://www.anilibria.tv' + data[i].posters.original.url + ' alt="постер" />' + data[i].names.ru + '</a></li>';
+        }
+        result.innerHTML = '<ul class="search__ul">' + suggest + list + '</ul>';
         } 
         else {
           result.innerHTML = '<ul class="search__ul"><li class="search__li">' + 'Сожалеем, но ничего не найдено' + '</li></ul>';
@@ -46,22 +67,20 @@ result.onclick = function(data) {
         let info = JSON.parse(localStorage.getItem(data.id));  
         poster.innerHTML = '<img class="product-card__image" id ="poster" src="https://www.anilibria.tv' + info.posters.original.url + '" alt="Постер" />';
         description.innerHTML = '<h4 class="heading heading_level-4">' + info.names.ru + '<br>' + info.description + '</h4>';
-        list = "";
+        let listRecentSearch = "";
         let keys = []; 
         let temp = JSON.parse(localStorage.getItem("searchStory"));
         let temp2 = 0;
         if (temp.length - 1 <= 2) {
           temp2 = 0;
         } else {
-          temp2 = temp.length - 1 - 2;
+          temp2 = temp.length - 3;
         }
         for(i=temp.length - 1; i>=temp2; i--) { 
-          keys.push(temp[i]);
+          // keys.push(temp[i]);
+          listRecentSearch += '<a class="product-card product-card__pc3" href="#"><div class="product-card__image-container2"><img class="product-card__image product-card__image2" src="https://www.anilibria.tv' + JSON.parse(localStorage.getItem(temp[i])).posters.original.url + '" alt="Постер" /></div><h4 class="heading heading_level-5">' + JSON.parse(localStorage.getItem(temp[i])).names.ru + '</h4></a>';
         }
-        keys.forEach(function(item, i, keys) {
-          list += '<a class="product-card product-card__pc3" href="#"><div class="product-card__image-container2"><img class="product-card__image product-card__image2" src="https://www.anilibria.tv' + JSON.parse(localStorage.getItem(keys[i])).posters.original.url + '" alt="Постер" /></div><h4 class="heading heading_level-5">' + JSON.parse(localStorage.getItem(keys[i])).names.ru + '</h4></a>';
-        });
-        recentSearch.innerHTML = list;
+        recentSearch.innerHTML = listRecentSearch;
     }).catch(function (err) {
     console.warn('Что-то пошло не так.', err);
     })
